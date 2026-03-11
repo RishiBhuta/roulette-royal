@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-gold-50: #fff9eb;
+  --color-gold-100: #ffedc2;
+  --color-gold-200: #ffd885;
+  --color-gold-300: #ffbc47;
+  --color-gold-400: #ffa11a;
+  --color-gold-500: #f58700;
+  --color-gold-600: #d46500;
+  --color-gold-700: #a34400;
+  --color-gold-800: #853706;
+  --color-gold-900: #6e2e0a;
+  --color-gold-950: #401602;
+}
+
+@layer base {
+  body {
+    @apply bg-zinc-950 text-white selection:bg-gold-500/30;
+    font-family: var(--font-sans);
+    background-image: radial-gradient(circle at 50% -20%, #1a1a1a 0%, #09090b 100%);
+  }
+}
+
+@layer components {
+  .casino-card {
+    @apply bg-zinc-900/80 backdrop-blur-md border border-white/10 rounded-2xl shadow-2xl;
+  }
+  
+  .gold-text {
+    @apply bg-gradient-to-b from-gold-200 via-gold-400 to-gold-600 bg-clip-text text-transparent;
+  }
+
+  .glow-gold {
+    box-shadow: 0 0 15px rgba(245, 135, 0, 0.3);
+  }
+
+  .glow-chip-blue { box-shadow: 0 0 20px rgba(37, 99, 235, 0.5); }
+  .glow-chip-red { box-shadow: 0 0 20px rgba(220, 38, 38, 0.5); }
+  .glow-chip-gold { box-shadow: 0 0 20px rgba(245, 135, 0, 0.5); }
+}
+
+/* Custom scrollbar for the betting board */
+.overflow-x-auto::-webkit-scrollbar {
+  height: 6px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-track {
+  @apply bg-zinc-900 rounded-full;
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb {
+  @apply bg-zinc-700 rounded-full hover:bg-zinc-600;
+}
