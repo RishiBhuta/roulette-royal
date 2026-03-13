@@ -9,6 +9,7 @@ import { BettingBoard } from './components/BettingBoard';
 import { ChipSelector } from './components/ChipSelector';
 import { BalancePanel } from './components/BalancePanel';
 import { ResultHistory } from './components/ResultHistory';
+import { SignupModal } from './components/SignupModal';
 import { INITIAL_BALANCE, ROULETTE_NUMBERS, getNumberColor } from './constants';
 import { Bet, BetType } from './types';
 import { motion, AnimatePresence } from 'motion/react';
@@ -23,8 +24,11 @@ export default function App() {
   const [spinningToNumber, setSpinningToNumber] = useState<number | null>(null);
   const [selectedChip, setSelectedChip] = useState(10);
   const [message, setMessage] = useState<string | null>("Place your bets!");
+  const [spinsCount, setSpinsCount] = useState(0);
+  const [isSignedUp, setIsSignedUp] = useState(false);
 
   const totalBet = currentBets.reduce((sum, bet) => sum + bet.amount, 0);
+  const needsSignup = spinsCount >= 5 && !isSignedUp;
 
   const handlePlaceBet = (type: BetType, value: number | string | number[]) => {
     if (isSpinning) return;
@@ -51,11 +55,12 @@ export default function App() {
   };
 
   const handleSpin = () => {
-    if (isSpinning || currentBets.length === 0) return;
+    if (isSpinning || currentBets.length === 0 || needsSignup) return;
 
     setIsSpinning(true);
     setWinningNumber(null);
     setMessage("Spinning...");
+    setSpinsCount(prev => prev + 1);
     
     const winner = ROULETTE_NUMBERS[Math.floor(Math.random() * ROULETTE_NUMBERS.length)];
     setSpinningToNumber(winner);
@@ -155,10 +160,10 @@ export default function App() {
               <div className="flex flex-col gap-4 w-full md:w-auto">
                 <button
                   onClick={handleSpin}
-                  disabled={isSpinning || currentBets.length === 0}
+                  disabled={isSpinning || currentBets.length === 0 || needsSignup}
                   className={`
                     group relative flex items-center justify-center gap-3 px-10 py-5 rounded-2xl font-black text-xl transition-all duration-300 shadow-2xl overflow-hidden
-                    ${isSpinning || currentBets.length === 0 
+                    ${isSpinning || currentBets.length === 0 || needsSignup
                       ? 'bg-zinc-800 text-zinc-600 cursor-not-allowed border border-white/5' 
                       : 'bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white border-b-4 border-emerald-800 hover:border-emerald-700 shadow-emerald-900/40'}
                   `}
@@ -214,6 +219,11 @@ export default function App() {
           </div>
         </main>
       </div>
+
+      <SignupModal 
+        isOpen={needsSignup} 
+        onSignup={() => setIsSignedUp(true)} 
+      />
     </div>
   );
 }
