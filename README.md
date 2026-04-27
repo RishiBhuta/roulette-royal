@@ -1,20 +1,51 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Casino Royale Roulette 🎰
 
-# Run and deploy your AI Studio app
+A premium, professional web-based Roulette game built with React and Vite. Experience the thrill of the casino with a sleek dark-gold theme, smooth animations, and a real-time betting system.
 
-This contains everything you need to run your app locally.
+## ✨ Features
 
-View your app in AI Studio: https://ai.studio/apps/aa79b822-3ba4-4631-a2b2-c8b8c639cbfe
+- **Professional Roulette Wheel**: Accurately simulated European wheel with a dynamic spin animation using custom cubic-bezier easing for a realistic feel.
+- **Advanced Betting Board**:
+    - **Straight Bets**: Bet on any number from 0 to 36.
+    - **Row Bets (Lines)**: Strategic betting on full horizontal rows (3-36, 2-35, 1-34) with a 3x payout.
+    - **Color Bets**: Large interactive buttons for Red and Black betting with 2x payouts.
+- **Interactive Chip System**: Selectable chip values (10, 50, 100) with visual chip stacks on the board.
+- **Dynamic Payout Engine**: Automatic calculation of winnings based on standard and custom roulette rules.
+- **Elite Casino UI**:
+    - Modern dark theme with gold accents.
+    - Glowing components and glassmorphism effects.
+    - Responsive layout that adapts to multiple screen sizes.
+- **Result History**: Keeps track of the last 5 winning numbers and their colors.
+- **Free Trial & Signup**: Includes a 5-spin free trial system that prompts a sleek signup modal to continue playing.
 
-## Run Locally
+## 🚀 Tech Stack
 
-**Prerequisites:**  Node.js
+- **Framework**: [React 19](https://react.dev/)
+- **Build Tool**: [Vite](https://vitejs.dev/)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
+- **Animations**: [Motion](https://motion.dev/) (formerly Framer Motion)
+- **Icons**: [Lucide React](https://lucide.dev/)
 
+## 🛠️ Installation & Setup
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+ **Clone the repository**:
+  git clone https://github.com/your-username/casino-royale-roulette.git
+   cd casino-royale-roulette
+   
+   1.Install dependencies:
+   npm install
+
+   2.Start the development server:
+   npm run dev
+
+   3.Build for production
+   npm run build
+
+  # 🎮 How to Play
+Select a Chip: Click on a chip value (10, 50, or 100) at the bottom.
+Place Bets: Click on any number, row (LINE), or color (RED/BLACK) on the board. Clicking again will remove the bet.
+Spin: Press the SPIN WHEEL button to start the game.
+Win: The winning number will be highlighted on the board, and your balance will be updated automatically.
+Next Round: Use the NEW BET button to clear the table or modify your existing bets for the next spin.
+Signup: After 5 free spins, fill out the premium signup form to unlock unlimited play.
+  
